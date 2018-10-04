@@ -9,6 +9,9 @@
 <script>
 	$('.button-collpase').sideNav();
 
+	//para que aparesca el select para seleccionar el administrador
+	$('select').material_select();
+
 	/*para convertir todo a mayusculas */
 	function may(obj, id){
 		obj = obj.toUpperCase();
