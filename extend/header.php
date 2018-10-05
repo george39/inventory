@@ -1,5 +1,8 @@
 <?php 
 include '../conexion/conexion.php';
+if (!isset($_SESSION['nombre_usuario'])) {
+  header('location:../');
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,4 +40,10 @@ include '../conexion/conexion.php';
 <body>
 <main>
 
-	<?php include 'menu_admin.php' ?>
+	<?php 
+  if ($_SESSION['nivel'] == 'ADMINISTRADOR'){
+    include 'menu_admin.php'; 
+  }else{
+    include 'menu_supervisor.php'; 
+  }
+  ?>

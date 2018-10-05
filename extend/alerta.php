@@ -7,8 +7,7 @@ include '../conexion/conexion.php';
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">	
 	<link rel="stylesheet" href="../cdn/sweetalert2.css">
 	<title>Proyecto</title>
 </head>
@@ -20,15 +19,31 @@ include '../conexion/conexion.php';
 	$tipo = htmlentities($_GET['tipo']);	
 
 	switch ($carpeta) {
-		case 'usuarios':
+		case 'usuario':
 			$carpet = '../usuarios/';
-			break;		
+			break;	
+
+		case 'home':
+			$carpet = '../inicio/';
+			break;
+
+		case 'salir':
+			$carpet = '../comienzo/';
+			break;			
 	}
 
 	switch ($pagina) {
 		case 'index':
 			$pagin = 'index.php';
-			break;		
+			break;
+
+		case 'home':
+			$pagin = 'index.php';
+			break;
+			
+		case 'salir':
+			$pagin = '';
+			break;				
 	}
 
 	$direccion = $carpet.$pagin;

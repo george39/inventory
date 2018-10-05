@@ -7,6 +7,16 @@
  <script src="../cdn/sweetalert2.js"></script>
 <!-- para que funcione el boton de menu -->
 <script>
+	//barra de busqueda
+	$('#buscar').keyup(function(event){
+		var contenido = new RegExp($(this).val(), 'i'); //para hacer la barra sensible a mayusculas y minusculas
+		$('tr').hide();
+		$('tr').filter(function(){
+			return contenido.test($(this).text());
+		}).show();
+		$('.cabecera').attr('style',''); //para que no me borre las cabeceras
+	});
+
 	$('.button-collpase').sideNav();
 
 	//para que aparesca el select para seleccionar el administrador
