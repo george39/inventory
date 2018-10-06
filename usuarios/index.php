@@ -75,19 +75,47 @@ $row = mysqli_num_rows($seleccionar);
 						<th>Nombre usuario</th>
 						<th>Nombre</th>
 						<th>Nivel</th>
+						<th></th>
 						<th>Bloqueo</th>
-						<th></th>
-						<th></th>
+						<th>Eliminar</th>
+						
 						</tr>
 					</thead>
 					<?php while($fila = $seleccionar->fetch_assoc()){ ?>
 						<tr>
 							<td><?php echo $fila['nombre_usuario'] ?></td>
 							<td><?php echo $fila['nombre'] ?></td>
-							<td><?php echo $fila['nivel'] ?></td>
-							<td><?php echo $fila['bloqueo'] ?></td>
-							<td></td>
-							<td></td>
+							<td>
+								<form action="actualizar_nivel.php" method="post">
+									<input type="hidden" name="id_usuario" value="<?php echo $fila['id_usuario'] ?>">
+									<select name="nivel" required>
+										<option value="<?php echo $fila['nivel'] ?>"><?php echo $fila['nivel'] ?></option>
+										<option value="ADMINISTRADOR">ADMINISTRADOR</option>
+										<option value="SUPERVISOR">SUPERVISOR</option>
+									</select>
+								</td>
+								<td>
+									<button type="submit" class="btn-floating"><i class="material-icons">repeat</i></button>						
+								</form>
+								</td>	
+							<td>
+								<!--bloquear y desbloquear usuarios manualmente -->
+							<?php if ($fila['bloqueo']==1): ?>
+								<a href="bloqueo_manual.php?us=<?php echo $fila['id_usuario'] ?>&bl=<?php echo $fila['bloqueo'] ?>"><i class="material-icons green-text">lock_open</i></a>
+							<?php else: ?>
+								<a href="bloqueo_manual.php?us=<?php echo $fila['id_usuario'] ?>&bl=<?php echo $fila['bloqueo'] ?>"><i class="material-icons red-text">lock_outline</i></a>
+							<?php endif; ?>
+
+							</td>
+							<td>
+								<a href="#" class="btn-floating red" onclick="swal({
+ 								title: 'Esta seguro que desea eliminar el usuario?',
+  								text: 'Al eliminarlo no podra recuperarlo',
+  								type: 'warning', showCancelButton: true,
+  								confirmButtonColor: '#3085d6', cancelButtonColor: '#d33',
+  								confirmButtonText: 'Si, eliminarlo'
+								}).then(function () { location.href='eliminar_usuario.php?id_usuario=<?php echo $fila['id_usuario'] ?>'; })"><i class="material-icons">clear</i></a>
+							</td>							
 						</tr>
 					<?php } ?>
 				</table>

@@ -1,5 +1,6 @@
 <!--PARA BLOQUEAR AUTOMATICAMENTE UN USUARIO  -->
 <?php
-if ($_SESSIO['nivel'] != 'ADMINISTRADOR') {
+if ($_SESSION['nivel'] != 'ADMINISTRADOR') {
 	header("location:bloqueo.php");
 }
+?>

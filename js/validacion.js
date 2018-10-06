@@ -1,4 +1,4 @@
-//metodo ajax para validar si el usuario esta disponible o no en la bd -->
+//metodo ajax para validar si el usuario esta disponible o no en la bd 
 $('#nombre_usuario').change(function(){
 		$.post('ajax_validacion_nombre_usuario.php',{
 			nombre_usuario:$('#nombre_usuario').val(),
