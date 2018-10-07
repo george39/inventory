@@ -9,6 +9,11 @@
 	<li><div class="divider"></div></li>
 	<li><a href="../usuarios"><i class="material-icons">contacts</i>USUARIOS</a></li>
 	<li><div class="divider"></div></li>
-	<li><a href="../login/salir.php"><i class="material-icons">power_settings_new</i>SALIR</a></li>
+	<li><a href="../empleados"><i class="material-icons">person_add</i>EMPLEADOS</a></li>	
+	<li><div class="divider"></div></li>
+	<li><a href="../referencias"><i class="material-icons green-text">add_circle_ou</i> REFERENCIAS</a></li>
+	<li><a href="../tarea">Tarea</a></li>
+	<li><div class="divider"></div></li>
+	<li><a href="../login/salir.php"><i class="material-icons red-text">power_settings_new</i>SALIR</a></li>
 	<li><div class="divider"></div></li>
 </ul>

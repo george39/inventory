@@ -29,7 +29,15 @@ include '../conexion/conexion.php';
 
 		case 'salir':
 			$carpet = '../comienzo/';
-			break;			
+			break;
+
+		case 'empleado':
+			$carpet = '../empleados/';				
+			break;
+
+		case 'referencia':
+			$carpet = '../referencias/';				
+			break;				
 	}
 
 	switch ($pagina) {

@@ -1,7 +1,7 @@
 <?php include '../conexion/conexion.php';
 $id_usuario = $conexion-> real_escape_string(htmlentities($_GET['id_usuario']));
 
-$borrar = $conexion->query("DELETE FROM usuarios WHERE id_usuario=$id_usuario ");
+$borrar = $conexion->query("DELETE FROM usuarios WHERE id_usuario='$id_usuario' ");
 
 if ($borrar) {
 	header('location:../extend/alerta.php?mensaje=Usuario eliminado&carpeta=usuario&pagina=index&tipo=success');

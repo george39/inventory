@@ -6,7 +6,7 @@ include '../extend/permiso.php';
 	<div class="col s12">
 		<div class="card">
 			<div class="card-content">
-				<span class="card-title">Creacion de usuarios</span>
+				<span class="card-title"><center>Creacion de usuarios</span>
 				<form class="form" action="ins_usuarios.php" method="post" enctype="multipart/form-data" autocomplete="off">
 					<div class="input-field">
 						<input type="text" name="nombre_usuario" required autofocus title="DEBE DE TENER MAS DE 4 CAREACTERES, NUMEROS O LETRAS" pattern="[A-Za-z0-9]{4,15}" id="nombre_usuario" onblur="may(this.value, this.id)"> <!--onblur es para convertir todo a mayusculas -->

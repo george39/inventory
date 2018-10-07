@@ -37,7 +37,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
 	</style>
 	<title>Proyecto</title>
 </head>
-<body>
+<body class="blue lighten-5">
 <main>
 
 	<?php 
