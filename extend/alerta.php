@@ -37,7 +37,11 @@ include '../conexion/conexion.php';
 
 		case 'referencia':
 			$carpet = '../referencias/';				
-			break;				
+			break;
+
+		case 'tarea':
+			$carpet = '../tarea/';
+			break;					
 	}
 
 	switch ($pagina) {

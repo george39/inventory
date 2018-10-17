@@ -7,8 +7,8 @@
 		<div class="col s12">
 			<div class="card">
 				<div class="card-content">
-					<span class="card-title"><center>Ingreso de referencias</span>
-						<form class="form" action="crear_referencia.php" method="post" enctype="multipart/form-data" onautocomplete="off">
+					<span class="card-title"><center>Ingreso de referencias</center></span>
+						<form class="form" action="crear_referencia.php" method="post" enctype="multipart/form-data" autocomplete="off">
 							<div class="input-field">
 								<input type="text" name="id_referencia" id="id_referencia" required autofocus title="DIGITE AQUI LA REFERENCIA">
 								<label for="id_referencia">Codigo de la referencia</label>
@@ -18,8 +18,8 @@
 								<input type="text" name="nombre_referencia" id="nombre_referencia" required title="DIGITE AQUI EL NOMBRE DE LA REFERENCIA" onblur="may(this.value, this.id)">
 								<label for="nombre_referencia">Nombre referencia</label>
 							</div>
-
-	<button type="submit" class="btn blue" id="guardar">Guardar<i class="material-icons">send</i></button>						
+							<div class="center">
+	<button type="submit" class="btn blue  waves-effect waves-light" id="guardar">Guardar<i class="material-icons">send</i></button>	</div>					
 						</form>
 				</div>
 			</div>

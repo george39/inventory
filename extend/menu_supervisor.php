@@ -5,8 +5,11 @@
 	<li>
 		
 	</li>
-	<li><a href="../inicio"><i class="material-icons">home</i>INICIO</a></li>
-	<li><div class="divider"></div></li>	
-	<li><a href="../login/salir.php"><i class="material-icons">power_settings_new</i>SALIR</a></li>
+	<li><a href="../inicio"><i class="material-icons blue-text">home</i>INICIO</a></li>
+	<li><div class="divider"></div></li>
+	<li><a href="../tarea"><i class="material-icons blue-text">note_add</i>TAREA</a></li>
+	<li><div class="divider"></div></li>
+	<li><a href="../troquelado"><i class="material-icons blue-text">archive</i>DIGITAR</a></li>	
+	<li><a href="../login/salir.php"><i class="material-icons red-text">power_settings_new</i>SALIR</a></li>
 	<li><div class="divider"></div></li>
 </ul>

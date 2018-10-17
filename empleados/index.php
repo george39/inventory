@@ -7,7 +7,7 @@ include '../extend/permiso.php';
 		<div class="col s12">
 			<div class="card">
 				<div class="card-content">
-					<span class="card-title"><center>Ingreso de empleados al sistema</span>
+					<span class="card-title"><center>Ingreso de empleados al sistema</center></span>
 					<form class="form" action="crear_empleado.php" method="post" enctype="multipart/form-data" autocomplete="off">
 						<div class="input-field">
 							<input type="text" name="nombre_empleado" id="nombre_empleado" required autofocus title="DIGITE AQUI EL NOMBRE DEL EMPLEADO" onblur="may(this.value, this.id)">
@@ -30,8 +30,9 @@ include '../extend/permiso.php';
 							$sel->close();
 							?>
 						</select>
-						
-<button type="submit" class="btn blue" id="guardar">Guardar<i class="material-icons">send</i></button>									
+<div class="center">						
+<button type="submit" class="btn blue" id="guardar">Guardar<i class="material-icons">send</i></button>
+</div>									
 					</form>	
 				</div>
 			</div>
