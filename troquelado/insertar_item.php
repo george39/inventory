@@ -14,11 +14,12 @@ if ($buscarAlumnos->num_rows < 10) {
 	$tabla.= '
 	<table class="table">
 	 <tr class="bg-primary">
-	 	<td>una cosa</td>
-	 	<td>dos cosas</td>
-	 	<td>tres cosas</td>
-	 	<td>cuatro cosas</td>
-	 	<td>cinco cosas</td>
+	 	<td>Codigo</td>
+	 	<td>No tarea</td>
+	 	<td>Referencia</td>
+	 	<td>Talla</td>
+	 	<td>fecha</td>
+	 	<td>No tarea unidad</td>
 	 </tr>	
 	';
 

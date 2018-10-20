@@ -26,11 +26,13 @@ if (isset($_POST["id_troquelado"]))
 			';
 		}
 	}
-	if ($query != '') {
+	if ($query != '') {	
 		if (mysqli_multi_query($conexion, $query)) {
-			echo "El pedido fue creado correctamente";
+			echo "LA ORDER FUE GUARDADA CORRECTAMENTE";
+
 		}else{
-			echo "El pedido no pudo ser creado";
+			echo "LA ORDEN NO PUDO SER GUARDADA";
+			
 		}
 	}else{
 		echo "Uliliza el formulario";

@@ -41,7 +41,9 @@ include '../conexion/conexion.php';
 
 		case 'tarea':
 			$carpet = '../tarea/';
-			break;					
+			break;
+
+								
 	}
 
 	switch ($pagina) {

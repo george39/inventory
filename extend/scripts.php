@@ -182,6 +182,9 @@ $(document).ready(function(){
 		if (e.which == 13) {
 		count = count + 1;
 
+
+		
+
 		//traigo los datos de la consulta y los guardo en variables
 		var id_troquelado = $('#codigo_barras').val();
 		var id_tarea = $('#id_tarea').val();
@@ -190,6 +193,7 @@ $(document).ready(function(){
 		var fecha = $('#fecha').val();
 		var id_tarea_unidad = $('#id_t_u').val();
 		var id_empleado = $('#id_empleado').val();
+		
 
 		var html_code = "<tr id='row"+count+"'>";
 		//html_code += '<td>'+count+'</td>';
@@ -200,19 +204,27 @@ $(document).ready(function(){
 		html_code += "<td contenteditable='true' class='fecha'>"+fecha+"</td>";
 		html_code += "<td contenteditable='true' class='id_tarea_unidad'>"+id_tarea_unidad+"</td>";
 		html_code += "<td contenteditable='true' class='id_empleado'>"+id_empleado+"</td>";
+		document.getElementById('total').innerHTML = count;	
+			
+		html_code += "<td><button type='button'  name='remove'  data-row='row"+count+"'  class='btn-floating red  remove'><i class='material-icons'>delete_forever</i>'</button></td>";	
 		
-		html_code += "<td><button type='button' name='remove'   data-row='row"+count+"' class='btn-floating red  remove'><i class='material-icons'>delete_forever</i>'</button></td> ";
 		html_code += "</tr>";
-		$('#data_table').append(html_code);
+		$('#data_table').append(html_code);		
 		$('input[type="text"]').val('');
 		
 		}//cierro if
 	});
 
+
+
 	//PARA ELIMINAR FILAS
 	$(document).on('click', '.remove', function(){
 		var delete_row = $(this).data("row");
 		$('#' + delete_row).remove();
+		//para que el total se descuente cuando se elimina una fila
+		count = count -1;
+		document.getElementById('total').innerHTML=count;
+
 	});
 
 	// para guardar los datos en la base de datos

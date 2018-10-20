@@ -17,7 +17,7 @@
                     <th>Fecha</th>
                     <th>Id tarea unidad</th>
                     <th><select class="" name="id_empleado" id="id_empleado" required>
-              <option value="" disabled selected>ELIGE EL CARGO DEL EMPLEADO</option>
+              <option value="" disabled selected>ELIGE AL EMPLEADO</option>
               <?php $sel=$conexion->prepare("SELECT * FROM empleados ");
               $sel->execute();
               $res = $sel->get_result();
@@ -57,10 +57,13 @@
           </table>    
 
 	<div align="center">
-      	<button type="button" name="guardar" id="guardar" class="btn btn-info"> Guardar<i  class="material-icons"i>send</i></button>
-       
-
+      	<button type="button" name="guardar" id="guardar" class="btn btn-info" onclick="javascript:location.reload()"> Guardar<i  class="material-icons"i>send</i></button>
 	</div>
+
+  <div align="right">
+    <h4>Total</h4>
+      <td><span id="total"></span></td>
+  </div>
 
  
   
@@ -77,6 +80,7 @@
 
 
 <?php include '../extend/scripts.php'; ?>
+<script src="../js/validacion.js"></script>
 
 
 
