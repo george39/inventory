@@ -31,7 +31,7 @@ if (isset($_SESSION['nombre_usuario'])) {
                 </div>
                 <div class="input-field">
                   <i class="material-icons prefix">vpn_key</i>
-                  <input type="password" name="contra" id="contra" required >
+                  <input type="password" name="contra" id="contra" >
                   <label for="contra">Contraseña</label> <!--pattern="[A-Za-a0-9{4,15}]" -->
                 </div>
                 <div class="input-field center">

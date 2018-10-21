@@ -21,12 +21,10 @@
 								<input type="number" name="cantidad" id="cantidad" required title="DIGITE AQUI LA CANTIDAD DE LA TAREA">
 								<label for="cantidad">Cantidad</label>
 							</div>
-
-							 <div class="input-field">
-				              <!-- Se inicializa-->
-				              <input type="datetime" class="datepicker" name="fecha_registro" id="fecha_registro" required value="<?php echo date("Y-m-d H:i");?>">
-				              <label for="fecha_registro">Fecha de registro</label>
-				            </div>
+							 
+							<div class="input-field">				             
+				              <input type="datetime" class="datepicker" name="fecha_registro" id="fecha_registro" required value="<?php echo date("Y-m-d H:i");?>">		              
+				            </div> 
 
 							<select name="referencia" required>
 								<option disabled selected>ELIJA LA REFERENCIA</option>
@@ -35,6 +33,19 @@
 								$resultado = $sele->get_result();
 								while ($f = $resultado->fetch_assoc()) { ?>
 									<option value="<?php echo $f['id_referencia'] ?>"><?php echo $f['id_referencia'] ?></option>
+								<?php } 
+								$sele->close();
+								 ?>								
+							</select>
+
+
+							<select name="id_empleado" required>
+								<option disabled selected>ELIJA EL OPERARIO</option>
+								<?php $sele = $conexion->prepare("SELECT * FROM empleados");
+								$sele->execute();
+								$resultado = $sele->get_result();
+								while ($f = $resultado->fetch_assoc()) { ?>
+									<option value="<?php echo $f['id_empleado'] ?>"><?php echo $f['nombre_empleado'] ?></option>
 								<?php } 
 								$sele->close();
 								 ?>								
@@ -75,23 +86,34 @@ $row = mysqli_num_rows($seleccionar);
 					<thead>
 						<tr class="cabecera">
 							<th>Nombre tarea</th>
-							<th>Talla</th>
-							<th>Cantidad</th>
 							<th>Referencia</th>
+							<th>Talla</th>							
 							<th>Fecha</th>
-							<th>Generear código</th>
+							<th>Operario</th>
+							
 						</tr>
 					</thead>
-					<?php while ($fila = $seleccionar->fetch_assoc()) { ?>
+					<?php while ($fila = $seleccionar->fetch_assoc()) { 
+						$id = $fila['id_empleado']; ?>
 						<tr>
-							<td><?php echo $fila['nombre'] ?></td>
-							<td><?php echo $fila['talla'] ?></td>
-							<td><?php echo $fila['cantidad'] ?></td>
+							<td><?php echo $fila['nombre_tarea'] ?></td>
 							<td><?php echo $fila['id_referencia'] ?></td>
-							<td><?php echo date('d-m-Y H:i', strtotime($fila['fecha'])) ?></td>
+							<td><?php echo $fila['talla'] ?></td>				
+							<td><?php echo date('d-m-Y H:i', strtotime($fila['fecha'])) ?></td>							
+
+							<td><?php $selec = $conexion->prepare("SELECT * FROM empleados WHERE id_empleado ='$id' ");
+				              $selec->execute();
+				              $res = $selec->get_result();
+				              while ($c = $res->fetch_assoc()) { ?>
+				               <?php echo $c['nombre_empleado'] ?>
+				                <?php }
+				                $selec->close();
+				                ?>
+				              </td>
+
 							<td><a href="../codigo_barras?id_tarea=<?php echo $fila['id_tarea'] ?>"  class="btn-floating blue" target="_blank"><i class="material-icons">view_week</i></a></td>
 
-							
+
 						</tr>
 
 					<?php } 
@@ -108,18 +130,3 @@ $row = mysqli_num_rows($seleccionar);
 <?php include '../extend/scripts.php'; ?>
 <script src="../js/validacion.js"></script>
 
-<script>
-	$('.modal').modal();
-
-	function enviar(valor){
-		$.get('../codigo_barras',{
-			id_tarea:valor,
-
-			beforeSend: function(){
-				$('.res_modal').html("Espere un momento por favor");
-			}
-		}, function(respuesta){
-			$('.res_modal').html(respuesta);			
-		});
-	}
-</script>

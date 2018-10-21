@@ -1,5 +1,4 @@
-<?php include '../troquelado/insertar_item.php'; 
-?>
+
 
 </main>
 <script
@@ -40,7 +39,8 @@
 		
 	});
 
-	
+
+//*****************************************************************************	
 		//busqueda ajax
 $(obtener_registros());
 
@@ -69,108 +69,6 @@ $(obtener_registros());
 	}); // cierro funcion para buscar
 
 
-/*
-
-//FUNCION PARA LLENAR LA LISTA
-$(function(){
-	var cantidad = 0;
-	//establecer numero para agregar fila
-	var set_number = function(){
-		
-	var table_len = $('#data_table tbody tr').length+1;
-
-	$('#cantidad').val(table_len);
-	}
-
-	set_number();
-
-	//$('#add_data').click(function(){
-	$('#leer').keypress(function(e){	
-		if (e.which == 13) {	
-		var codigo_barras = $('#codigo_barras').val();
-		var id_tarea = $('#id_tarea').val();
-		var referencia = $('#referencia').val();
-		var talla = $('#talla').val();
-		var fecha = $('#fecha').val();
-		var id_t_u = $('#id_t_u').val();
-		cantidad++;
-
-		var boton = "<tr id='row"+cantidad+"'>";
-		boton = "<td><button type='button' name='remove' data-row='row"+cantidad+"' class='btn btn-danger  remove'>Eliminar</button></td> ";
-
-
-
-		//agregar los datos de la consulta a al tabla
-		$('#data_table tbody:last-child').append(
-			'<tr>'+				
-				'<td>'+cantidad+'</td>'+
-				'<td>'+codigo_barras+'</td>'+
-				'<td>'+id_tarea+'</td>'+
-				'<td>'+referencia+'</td>'+
-				'<td>'+talla+'</td>'+
-				'<td>'+fecha+'</td>'+
-				'<td>'+id_t_u+'</td>'+
-				'<td>'+boton+'</td>'+
-			'</tr>'	
-
-		);
-
-		$('input[type="text"]').val('');
-		
-		set_number();
-	}//cierro if
-	});
-
-	//para guardar en la base de datos
-	$('#save').click(function(){
-		var table_data = [];
-
-		//usaremos .each para obtener todos los datos
-		$('#data_table tr').each(function(row,tr){
-			//creo una matriz para almacenar los datos por fila
-
-			//obtener solo los datos con valor
-			if ($(tr).find('td:eq(1)').text() == "") {
-
-			}else {
-				var sub = {
-				'codigo_barras' : $(tr).find('td:eq(1)').text(),
-				'id_tarea' : $(tr).find('td:eq(2)').text(),
-				'referencia' : $(tr).find('td:eq(3)').text(),
-				'talla' : $(tr).find('td:eq(4)').text(),
-				'fecha' : $(tr).find('td:eq(5)').text(),
-				'id_t_u' : $(tr).find('td:eq(6)').text()
-			};
-			table_data.push(sub);
-			}
-			
-		});
-		//comprobar lo que se va a guardar via consola
-		//console.log(table_data);
-
-		//guardar los datos en la base de datos con ajax
-
-		//sweet alert
-		swal({
-			title : 'Desea enviar los datos',
-			text : '',
-			type : '',
-			showLoaderOnConfirm : true, 
-			showCancelButton : true,
-			confirmButtonText : 'Si',
-			closeOnConfirm : false },
-
-			function(){
-
-			}
-		);
-
-	});
-
-
-});//cierro funcion
-
-*/
 //******************************************************************************
 //******************************************************************************
 //FUNCION PARA LEER CODIGO DE BARRAS Y AGREGARLO A LA LISTA
@@ -180,18 +78,14 @@ $(document).ready(function(){
 	//$('#add').click(function(){
 	$('#leer').keypress(function(e){	
 		if (e.which == 13) {
-		count = count + 1;
-
-
-		
+		count = count + 1;		
 
 		//traigo los datos de la consulta y los guardo en variables
 		var id_troquelado = $('#codigo_barras').val();
 		var id_tarea = $('#id_tarea').val();
 		var referencia = $('#referencia').val();
 		var talla = $('#talla').val();
-		var fecha = $('#fecha').val();
-		var id_tarea_unidad = $('#id_t_u').val();
+		//var fecha = $('#fecha_registro').val();		
 		var id_empleado = $('#id_empleado').val();
 		
 
@@ -201,8 +95,7 @@ $(document).ready(function(){
 		html_code += "<td contenteditable='true' class='id_tarea'>"+id_tarea+"</td>";
 		html_code += "<td contenteditable='true' class='referencia'>"+referencia+"</td>";
 		html_code += "<td contenteditable='true' class='talla'>"+talla+"</td>";
-		html_code += "<td contenteditable='true' class='fecha'>"+fecha+"</td>";
-		html_code += "<td contenteditable='true' class='id_tarea_unidad'>"+id_tarea_unidad+"</td>";
+		//html_code += "<td contenteditable='true' class='fecha_registro'>"+fecha+"</td>";		
 		html_code += "<td contenteditable='true' class='id_empleado'>"+id_empleado+"</td>";
 		document.getElementById('total').innerHTML = count;	
 			
@@ -233,8 +126,7 @@ $(document).ready(function(){
 		var id_tarea = [];//$('#id_tarea').val();
 		var referencia = [];//$('#referencia').val();
 		var talla = [];//$('#talla').val();
-		var fecha = [];//$('#fecha').val();
-		var id_tarea_unidad = [];//$('#id_t_u').val();
+		//var fecha = [];//$('#fecha').val();	
 		var id_empleado = [];
 
 	
@@ -250,12 +142,10 @@ $(document).ready(function(){
 		$('.talla').each(function(){
 			talla.push($(this).text());
 		});
-		$('.fecha').each(function(){
-			fecha.push($(this).text());
-		});
-		$('.id_tarea_unidad').each(function(){
-			id_tarea_unidad.push($(this).text());
-		});
+		//$('.fecha_registro').each(function(){
+			//fecha.push($(this).text());
+		//});
+		
 		$('.id_empleado').each(function(){
 			id_empleado.push($(this).text());
 		});
@@ -263,7 +153,7 @@ $(document).ready(function(){
 		$.ajax({
 			url:"guardar_tarea.php",
 			method:"POST",
-			data:{id_troquelado:id_troquelado, id_tarea:id_tarea, referencia:referencia, talla:talla, fecha:fecha, id_tarea_unidad:id_tarea_unidad, id_empleado:id_empleado},
+			data:{id_troquelado:id_troquelado, id_tarea:id_tarea, referencia:referencia, talla:talla, id_empleado:id_empleado},
 			success:function(data){
 				alert(data);
 				$("td[contentEditable='true']").text("");

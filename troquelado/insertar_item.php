@@ -19,7 +19,7 @@ if ($buscarAlumnos->num_rows < 10) {
 	 	<td>Referencia</td>
 	 	<td>Talla</td>
 	 	<td>fecha</td>
-	 	<td>No tarea unidad</td>
+	 	<td>Operario</td>
 	 </tr>	
 	';
 
@@ -33,7 +33,7 @@ while($row = $buscarAlumnos->fetch_assoc())
 		<td><input size="3" id="referencia" value="'.$row['referencia'].'"</input></td>
 		<td><input size="3" id="talla" value="'.$row['talla'].'"</input></td>
 		<td><input size="3" id="fecha" value="'.$row['fecha'].'"</input></td>
-		<td><input size="3" id="id_t_u" value="'.$row['id_tarea_unidad'].'"</input></td>
+		<td><input size="3" id="id_operario" value="'.$row['id_empleado'].'"</input></td>
 			
 
 	</tr>	

@@ -6,27 +6,44 @@
 		<div class="card">
 			<div class="card-content">
 				<span class="card-title">Agregar elementos</span>
-      				<table  class="table table-border highlight responsive-table" id="data_table">
+
+        <!--Aqui almacenamos el total de los items que se agregan a la tabla -->
+        <div align="right">
+          <h4>Total</h4>
+            <td><span id="total"></span></td>
+        </div>
+
+        <!--Boton para guardar todos los items que estan en la tabla -->
+        <div align="center">
+          <button type="button" name="guardar" id="guardar" class="btn btn-info" onclick="javascript:location.reload()"> Guardar<i  class="material-icons"i>send</i></button>
+        </div>
+
+
+      				<table  class="table bordered highlight responsive-table" id="data_table">
               <thead>                  
                 <tr>
                 
-                  <th>Id troquelado</th>
-                    <th>Id tarea</th>
-                    <th>Referencia</th>
-                    <th>Talla</th>
-                    <th>Fecha</th>
-                    <th>Id tarea unidad</th>
-                    <th><select class="" name="id_empleado" id="id_empleado" required>
-              <option value="" disabled selected>ELIGE AL EMPLEADO</option>
-              <?php $sel=$conexion->prepare("SELECT * FROM empleados ");
-              $sel->execute();
-              $res = $sel->get_result();
-              while ($f = $res->fetch_assoc()) {?>
-                <option value="<?php echo $f['id_empleado'] ?>"><?php echo $f['nombre_empleado'] ?></option>
-              <?php } 
-              $sel->close();
-              ?>
-            </select></th>
+                  <th>Código</th>
+                  <th>No tarea</th>
+                  <th>Referencia</th>
+                  <th>Talla</th>
+                  
+                  <th>Operario</th>
+                    
+                  <th><select class="" name="id_empleado" id="id_empleado" required>
+                      <option value="" disabled selected>ELIGE AL EMPLEADO</option>
+                        <?php $sel=$conexion->prepare("SELECT * FROM empleados ");
+                        $sel->execute();
+                        $res = $sel->get_result();
+                        while ($f = $res->fetch_assoc()) {?>
+                          <option value="<?php echo $f['id_empleado'] ?>"><?php echo $f['nombre_empleado'] ?></option>
+                        <?php } 
+                        $sel->close();
+                        ?>
+                      </select>
+                  </th>
+
+
                                                     
                 </tr>
                 </thead>
@@ -36,39 +53,20 @@
                    
                   </tr>
                 </tbody>
-
                 
-
-
-
-                                
-                  <input type="text" name="leer" id="leer" placeholder="Ingrese aqui el codigo" autofocus>
+                <!--caja para leer el codigo de barras -->                
+                <input type="text" name="leer" id="leer" placeholder="Ingrese aqui el codigo" autofocus>
                 
-                <section id="tabla_resultado">
-                  
-                </section>
+                <!--aqui almaceno los resultados de la consulta de ajax -->
+                <section id="tabla_resultado"></section>
 
-
-                <div id="insertar_item"></div>
-
-                  
-                  
-                     
           </table>    
 
-	<div align="center">
-      	<button type="button" name="guardar" id="guardar" class="btn btn-info" onclick="javascript:location.reload()"> Guardar<i  class="material-icons"i>send</i></button>
-	</div>
-
-  <div align="right">
-    <h4>Total</h4>
-      <td><span id="total"></span></td>
-  </div>
+	
 
  
-  
 
-  <div class="resultado"></div>
+ 
 
   <br>
   
