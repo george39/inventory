@@ -82,12 +82,13 @@ $row = mysqli_num_rows($seleccionar);
 		<div class="card">
 			<div class="card-content">
 				<span class="card-title">Tareas(<?php echo $row ?>)</span>
-				<table>
+				<table class="table bordered highlight responsive-table">
 					<thead>
 						<tr class="cabecera">
 							<th>Nombre tarea</th>
 							<th>Referencia</th>
-							<th>Talla</th>							
+							<th>Talla</th>
+							<th>Cantidad</th>							
 							<th>Fecha</th>
 							<th>Operario</th>
 							
@@ -98,7 +99,8 @@ $row = mysqli_num_rows($seleccionar);
 						<tr>
 							<td><?php echo $fila['nombre_tarea'] ?></td>
 							<td><?php echo $fila['id_referencia'] ?></td>
-							<td><?php echo $fila['talla'] ?></td>				
+							<td><?php echo $fila['talla'] ?></td>
+							<td><?php echo $fila['cantidad'] ?></td>				
 							<td><?php echo date('d-m-Y H:i', strtotime($fila['fecha'])) ?></td>							
 
 							<td><?php $selec = $conexion->prepare("SELECT * FROM empleados WHERE id_empleado ='$id' ");

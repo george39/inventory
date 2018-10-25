@@ -1,0 +1,8 @@
+a:link, a:visited {
+  color: blue;
+}
+
+a.current:link, a.current:visited {
+  color: white;
+  background-color: blue;
+}

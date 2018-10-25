@@ -89,6 +89,21 @@ $(document).ready(function(){
 		var id_empleado = $('#id_empleado').val();
 		
 
+		//PARA VALIDAR SI SE HA ELEGIDO UN OPERARIO
+	  	if ($('#id_empleado').val() == null) {
+	  	
+		    swal({
+				type: "error",
+				title: "ELIGUE UN OPERARIO",
+				showConfirmButton: true,
+				confirmButtonText: "Cerrar",
+				closeOnConfirm: false
+				}). then(function(result){
+				  window.location.reload();
+				             })                         
+        } 
+		
+
 		var html_code = "<tr id='row"+count+"'>";
 		//html_code += '<td>'+count+'</td>';
 		html_code += "<td contenteditable='true' class='id_troquelado'>"+id_troquelado+"</td>";
